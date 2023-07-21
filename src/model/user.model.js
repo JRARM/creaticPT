@@ -12,21 +12,22 @@ class User extends Model { }
 
 User.init({
     // Model attributes are defined here
-    test_id: {
+    user_id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true
     },
-    test_name: {
+    user_name: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    test_description: {
+    user_email: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
-    test_isactive: {
-        type: DataTypes.BOOLEAN,
+    user_password: {
+        type: DataTypes.STRING,
         allowNull: true
     }
 }, {
