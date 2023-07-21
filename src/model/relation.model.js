@@ -8,32 +8,29 @@ const sequelize = new Sequelize('test1', 'root', '12345678', {
 });
 
 
-class Book extends Model { }
+class Relation extends Model { }
 
-Book.init({
+Relation.init({
     // Model attributes are defined here
-    test_id: {
+    relation_id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true
     },
-    test_name: {
+    relation_user_id: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
-    test_description: {
+    relation_appointment: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
-    test_isactive: {
-        type: DataTypes.BOOLEAN,
-        allowNull: true
-    }
 }, {
     // Other model options go here
     sequelize, // We need to pass the connection instance
-    modelName: 'User' // We need to choose the model name
+    modelName: 'Relation' // We need to choose the model name
 });
-module.exports = User;
-console.log(User === sequelize.models.User); // true
-
+module.exports = Relation;
+console.log(Relation === sequelize.models.Relation); // true

@@ -8,33 +8,27 @@ const sequelize = new Sequelize('test1', 'root', '12345678', {
 });
 
 
-class User extends Model { }
+class Appointment extends Model { }
 
-User.init({
+Appointment.init({
 
-    user_id: {
+    appointment_id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true
     },
-    user_name: {
-        type: DataTypes.STRING,
+    appointment_date: {
+        type: DataTypes.DATE,
         allowNull: false
     },
-    user_email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
-    },
-    user_password: {
-        type: DataTypes.STRING,
+    appointment_isused: {
+        type: DataTypes.BOOLEAN,
         allowNull: true
     }
 }, {
-
     sequelize,
-    modelName: 'User'
+    modelName: 'Appointment'
 });
-module.exports = User;
-console.log(User === sequelize.models.User);
+module.exports = Appointment;
+console.log(Appointment === sequelize.models.Appointment);
 
