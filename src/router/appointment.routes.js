@@ -73,17 +73,17 @@ router.get("/bindappointments", async (req, res) => {
 
 async function addAppointments() {
     try {
-        await Appointment.sync(); // Esto creará la tabla si aún no existe
+        await Appointment.sync();
 
-        const startDate = new Date(); // Fecha de inicio (hoy)
-        const days = 3; // Total de días
+        const startDate = new Date();
+        const days = 3;
 
         const appointmentsToAdd = [];
         for (let day = 0; day < days; day++) {
             const date = new Date(startDate);
             date.setDate(date.getDate() + day);
 
-            // Intervalo de 8:00 a 12:00
+
             for (let hour = 8; hour < 12; hour++) {
                 const appointment = {
                     appointment_date: new Date(date).setHours(hour),
@@ -92,7 +92,7 @@ async function addAppointments() {
                 appointmentsToAdd.push(appointment);
             }
 
-            // Intervalo de 14:00 a 18:00
+
             for (let hour = 14; hour < 18; hour++) {
                 const appointment = {
                     appointment_date: new Date(date).setHours(hour),
